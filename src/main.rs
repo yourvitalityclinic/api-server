@@ -47,6 +47,7 @@ async fn root(State(client): State<EmailClient>, Json(payload): Json<FormData>) 
 async fn main() {
     let api_key = env::var("MAILJET_API_KEY").unwrap();
     let secret_key = env::var("MAILJET_SECRET_KEY").unwrap();
+    let port = env::var("PORT").unwrap();
     let client = EmailClient::new(api_key, secret_key);
 
     let app = Router::new()
@@ -54,7 +55,8 @@ async fn main() {
         .with_state(client)
         .layer(CorsLayer::permissive());
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    println!("[INFO] Listening on `{}`", "0.0.0.0:3000");
+    let ip = format!("0.0.0.0:{}", port);
+    let listener = tokio::net::TcpListener::bind(&ip).await.unwrap();
+    println!("[INFO] Listening on `{}`", ip);
     axum::serve(listener, app).await.unwrap();
 }
