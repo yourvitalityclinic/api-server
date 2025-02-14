@@ -45,7 +45,6 @@ async fn root(State(client): State<EmailClient>, Json(payload): Json<FormData>) 
 
 #[tokio::main]
 async fn main() {
-    dotenvy::dotenv().unwrap();
     let api_key = env::var("MAILJET_API_KEY").unwrap();
     let secret_key = env::var("MAILJET_SECRET_KEY").unwrap();
     let client = EmailClient::new(api_key, secret_key);
