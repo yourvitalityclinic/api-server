@@ -9,11 +9,18 @@ mod email;
 
 const EMAIL_TEMPLATE: &str = r#"
 <body>
-    <h1>Your Vitality Wheel</h1>
-    <img style="width: 100vw;" src="cid:id1" alt="Your Vitality Wheel"  />
-    <p>Thank you for using my vitality wheel.<p>
+    <h2>Congratulations!</h2>
+    <p>By completing the Wheel of Vitality assessment, you’ve taken a valuable step towards understanding how much you already do to enhance your vitality, as well as which areas may benefit from more attention.</p>
+    <p>Thank you for subscribing to the Vitality Clinic newsletter.</p>
+    <p>But that’s not all! You can also take advantage of a <b>30% discount</b> on your first 60-minute Psychological Vitality Consultation with me. This session can help you clarify your goals and identify the barriers that may be holding you back from a more fulfilling life.</p>
+    <p>To enquire about my availability, get in touch by forwarding your results to my address <span>yourvitalityclinic</span><span>@gmail</span><span>.com</span></p>
+    <footer style="font-size: 12px; color: #888888; margin-top: 30px; padding-top: 15px; border-top: 1px solid #dddddd;">
+        <p>© 2025 by Kat Wawer Dziedziak CPsychol. All rights reserved.</p>
+        <p>Developer May Dziedziak</p>
+    </footer>
 </body>
 "#;
+
 
 #[derive(Debug, Deserialize)]
 struct FormData {
